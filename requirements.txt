@@ -1,0 +1,6 @@
+Django==4.1.3
+whitenoise
+wikipedia
+nltk
+beautifulsoup4
+googlesearch-python

@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Lazy Mail</title>
+  <link rel="icon" href="https://us.123rf.com/450wm/juliarstudio/juliarstudio1809/juliarstudio180919953/107867720-stealth-bomber-icon-in-icon-in-cartoon-style-isolated-illustration.jpg?ver=6" type="image/png">
+</head>
+<body>
+<div class="bg-gradient-to-tr from-sky-200 to-sky-500">
+  <section id="login" class="p-4 flex flex-col justify-center min-h-screen max-w-md mx-auto">
+    <div class="p-6 bg-sky-100 rounded">
+      <div class="flex items-center justify-center text-4xl font-black text-sky-900 m-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 w-10 h-10" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
+        </svg>
+      <h1 class="tracking-wide">Lazy Mail<span class="font-mono"></span></h1>
+      </div>
+        <form id="login_form" action="mail" method="POST" enctype="multipart/form-data"
+        class="flex flex-col justify-center">
+        {% csrf_token %}
+
+          <label class="text-sm font-medium">Subject</label>
+          <input id="subject" class="
+          mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+          focus:outline-none
+          focus:border-sky-500
+          focus:ring-1
+          focus:ring-sky-500
+          focus:invalid:border-red-500 focus:invalid:ring-red-500" type="text" name="Subject" placeholder="Subject" required>
+          <label class="text-sm font-medium">Username (Optional)</label>
+          <input id="username" class="
+          mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+          focus:outline-none
+          focus:border-sky-500
+          focus:ring-1
+          focus:ring-sky-500
+          focus:invalid:border-red-500 focus:invalid:ring-red-500" type="text" name="username" placeholder="test = test@test.com">
+          <label class="text-sm font-medium">Message</label>
+          <textarea id="message" class="
+          mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+          focus:outline-none
+          focus:border-sky-500
+          focus:ring-1
+          focus:ring-sky-500
+          focus:invalid:border-red-500 focus:invalid:ring-red-500 resize-none" name="message" placeholder="message" required rows="3"></textarea>
+          <label class="text-sm font-medium">Email Data</label>
+          <input id="myfile" class="
+          mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+          focus:outline-none
+          focus:border-sky-500
+          focus:ring-1
+          focus:ring-sky-500
+          focus:invalid:border-red-500 focus:invalid:ring-red-500" type="file" name="myfile" multiple required>
+          <label class="text-sm font-medium">Attachment 1</label>
+          <input id="attachment" class="
+          mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+          focus:outline-none
+          focus:border-sky-500
+          focus:ring-1
+          focus:ring-sky-500
+          focus:invalid:border-red-500 focus:invalid:ring-red-500" type="file" name="attachment">
+          <label class="text-sm font-medium">Attachment 2</label>
+          <input id="attachment" class="
+          mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+          focus:outline-none
+          focus:border-sky-500
+          focus:ring-1
+          focus:ring-sky-500
+          focus:invalid:border-red-500 focus:invalid:ring-red-500" type="file" name="attachment">
+          <button id="btn" type="submit" class="btn btn-primary mr-2">Submit</button>
+
+        </form>
+
+        {% if code %}
+        <div class="mt-4 p-4 rounded {% if 'successfully' in code or not mail %}bg-green-100 text-green-800{% else %}bg-red-100 text-red-800{% endif %}">
+          <p class="font-medium">{{ code }}</p>
+          {% if mail %}
+            {% for item in mail %}
+              {% if 'Failed' in item.2 %}
+                <p>Message not sent, try again for {{ item.0 }}</p>
+              {% else %}
+                <p>Message sent successfully to {{ item.0 }}</p>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+        {% endif %}
+    </div>
+  </section>
+  
+</div>
+<footer class="bg-sky-100 text-center py-4">
+  <p class="text-sky-900">Developed by Elbort Bista</p>
+</footer>
+<script>
+  const textarea = document.getElementById('message');
+  textarea.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  });
+</script>
+</body>
+</html>

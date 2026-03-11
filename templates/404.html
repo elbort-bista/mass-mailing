@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>404 | Elbort Bista</title>
+  <link rel="icon" href="https://us.123rf.com/450wm/juliarstudio/juliarstudio1809/juliarstudio180919953/107867720-stealth-bomber-icon-in-icon-in-cartoon-style-isolated-illustration.jpg?ver=6" type="image/png">
+  <style>
+    .dance span{
+      display:inline-block;
+      animation:dance 1.8s infinite ease-in-out;
+    }
+    .dance span:nth-child(odd){animation-delay:.1s}
+    .dance span:nth-child(even){animation-delay:.3s}
+    .dance span:nth-child(3n){animation-delay:.5s}
+
+    @keyframes dance{
+      0%{transform:translateY(0) rotate(0deg)}
+      25%{transform:translateY(-8px) rotate(-3deg)}
+      50%{transform:translateY(0) rotate(0deg)}
+      75%{transform:translateY(8px) rotate(3deg)}
+      100%{transform:translateY(0) rotate(0deg)}
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-tr from-sky-200 to-sky-500 min-h-screen flex items-center justify-center">
+
+  <div class="bg-sky-100 p-8 rounded-xl shadow-xl text-center max-w-md w-full">
+
+    <h1 class="text-7xl font-black text-sky-900 mb-2">404</h1>
+    <p class="text-xl font-semibold text-sky-800 mb-4">Page Not Found</p>
+
+    <div class="dance text-2xl font-bold text-sky-900 mb-6" id="xrazer"></div>
+
+    <p class="text-sky-700 mb-6">Looks like you entered a wrong route.<br>Even hackers get lost sometimes 😄</p>
+
+    <a href="/" class="inline-block px-6 py-2 rounded-lg bg-sky-600 text-white font-semibold hover:bg-sky-700 transition">
+      Go Home
+    </a>
+
+    <div class="mt-8 text-sm text-sky-900 font-medium dance" id="elbort"></div>
+
+  </div>
+
+<script>
+  const xrazerText = "Lazy Mail";
+  const elbortText = "Developed by Elbort Bista";
+
+  function makeDance(text, elementId){
+    const el = document.getElementById(elementId);
+    el.innerHTML = "";
+    [...text].forEach(char=>{
+      const span = document.createElement('span');
+      span.innerText = char === ' ' ? '\u00A0' : char;
+      el.appendChild(span);
+    });
+  }
+
+  makeDance(xrazerText, 'xrazer');
+  makeDance(elbortText, 'elbort');
+</script>
+
+</body>
+</html>
