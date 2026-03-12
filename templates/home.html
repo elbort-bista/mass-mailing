@@ -29,14 +29,19 @@
           focus:ring-1
           focus:ring-sky-500
           focus:invalid:border-red-500 focus:invalid:ring-red-500" type="text" name="Subject" placeholder="Subject" required>
-          <label class="text-sm font-medium">Username (Optional)</label>
-          <input id="username" class="
-          mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
-          focus:outline-none
-          focus:border-sky-500
-          focus:ring-1
-          focus:ring-sky-500
-          focus:invalid:border-red-500 focus:invalid:ring-red-500" type="text" name="username" placeholder="test = test@test.com">
+          <label class="text-sm font-medium">Username</label>
+          <select id="username" name="username" class="
+           mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm
+            focus:outline-none
+            focus:border-sky-500
+            focus:ring-1
+            focus:ring-sky-500
+           focus:invalid:border-red-500 focus:invalid:ring-red-500" required>
+             <option value="" disabled selected>Select a username</option>
+             {% for user in users %}
+                 <option value="{{ user.email }}">{{ user.email }}</option>
+             {% endfor %}
+           </select>
           <label class="text-sm font-medium">Message</label>
           <textarea id="message" class="
           mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400

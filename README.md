@@ -7,6 +7,10 @@ MassMail is a web application built using Django that allows users to send mass 
 - User-friendly Interface: MassMail provides a simple and intuitive user interface where users can upload a CSV file containing the recipient's email addresses and other relevant information.
     
 - CSV File Integration: The application supports importing recipient data from CSV files, allowing users to easily manage and update their mailing lists.
+
+- Username Selection: Users can now select a username from a dropdown list, which is populated from the admin-added users.
+
+- Email Sending Limit: To prevent abuse, the application now limits the number of emails that can be sent in a single batch to 200.
     
 - Email Composition: Users can compose personalized emails using a rich text editor, including the ability to add attachments and customize the email content.
     

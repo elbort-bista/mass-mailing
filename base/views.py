@@ -12,10 +12,12 @@ from email import encoders
 
 from django.shortcuts import render
 from django.conf import settings
+from .models import User
 
 
 def index(request):
-    return render(request, 'home.html')
+    users = User.objects.all()
+    return render(request, 'home.html', {'users': users})
 
 
 def mail(request):
@@ -138,8 +140,8 @@ def mail(request):
     count = 0
 
     for row in reader:
-        if not row:
-            continue
+        if not row or count >= 200:
+            break
 
         email_address = row[0].strip()
         first_name = row[1].strip() if len(row) > 1 else ""
